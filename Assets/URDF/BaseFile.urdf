@@ -7,6 +7,7 @@
       <geometry>
         <box size="1.0 1.0 0.2"/> <!-- A larger base: 1m x 1m x 0.2m -->
       </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Ensure proper orientation -->
       <material name="black">
         <color rgba="0.0 0.0 0.0 1.0"/> <!-- Black color -->
       </material>
@@ -15,6 +16,7 @@
       <geometry>
         <box size="1.0 1.0 0.2"/> <!-- Collision geometry matches the visual -->
       </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/> <!-- Align collision geometry with visual -->
     </collision>
     <inertial>
       <mass value="10.0"/> <!-- Heavier mass for a stable base -->
