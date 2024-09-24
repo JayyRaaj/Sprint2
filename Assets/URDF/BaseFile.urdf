@@ -24,4 +24,36 @@
     </inertial>
   </link>
 
+    <!-- Link 1 (arm segment) -->
+  <link name="link_1">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/> <!-- Arm link: 0.5m long, 0.1m radius -->
+      </geometry>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/> <!-- Positioned above the base -->
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/> <!-- Grey color for the link -->
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/> <!-- Collision matches the visual -->
+      </geometry>
+      <origin xyz="0 0 0.25" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+  <!-- Revolute Joint connecting base and link_1 -->
+  <joint name="base_to_link1_joint" type="revolute">
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/> <!-- Joint is at the top of the base -->
+    <axis xyz="0 0 1"/> <!-- Rotation around Z-axis -->
+    <limit effort="100.0" velocity="1.0" lower="-1.57" upper="1.57"/> <!-- Joint limits -->
+  </joint>
+
 </robot>
