@@ -56,4 +56,39 @@
     <limit effort="100.0" velocity="1.0" lower="-1.57" upper="1.57"/> <!-- Joint limits -->
   </joint>
 
+    <!-- Link 2 (Second arm segment) -->
+  <link name="link_2">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/>
+      </geometry>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <material name="grey">
+        <color rgba="0.5 0.5 0.5 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/>
+      </geometry>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="1.0"/>
+      <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
+    </inertial>
+  </link>
+
+<!-- Revolute Joint connecting link_1 and link_2 -->
+<joint name="link1_to_link2_joint" type="revolute">
+  <parent link="link_1"/>
+  <child link="link_2"/>
+  <origin xyz="0 0 0.25" rpy="0.5 0 0"/> <!-- Adjust origin so link_2 connects seamlessly -->
+  <axis xyz="0 0 1"/>
+  <limit effort="100.0" velocity="1.0" lower="-1.57" upper="1.57"/>
+</joint>
+
+ 
+
+
 </robot>
